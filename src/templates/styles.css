@@ -1,0 +1,30 @@
+body {
+  background-color: aliceblue;
+}
+.container {
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+h1 {
+  padding-top: 45px;
+  font-size: 60;
+  font-weight: 300;
+  margin-right: auto;
+  margin-left: auto;
+}
+.input__control {
+  display: flex;
+  justify-content: center;
+}
+.country__data {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+}
+input {
+  max-width: 80vw;
+  outline: none;
+  border: none;
+}
