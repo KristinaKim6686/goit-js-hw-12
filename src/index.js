@@ -27,12 +27,12 @@ function onSearch(e) {
     myStack.close(true);
     if (data.length === 1) {
       refs.countryCardContainer.insertAdjacentHTML("beforeend", countryCardTpl(data[0]))
-    } else if (data.length < 11) {
+    } else if (data.length < 11 ) {
       data.forEach((country) => {
         console.log(country.name);
       });
       refs.countryCardContainer.insertAdjacentHTML("beforeend", countryList(data))
-    } else if(data.length>10){
+    } else if(data.length>10 ){
       PNotify.notice({
         text: "Too many matches found. Please, enter a more specific name!",
         stack: myStack,
@@ -40,7 +40,7 @@ function onSearch(e) {
       })
     } else {
        PNotify.notice({
-        text: "Such country doesnot exist!Try to type something normal O.o",
+        text: "Such country doesn't exist!Try to type something normal O.o",
         stack: myStack,
         modules: new Map([...PNotify.defaultModules, [PNotifyMobile, {}]]),
       })

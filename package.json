@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@pnotify/core": "^5.2.0",
-    "@pnotify/mobile": "^5.2.0"
+    "@pnotify/mobile": "^5.2.0",
+    "caniuse-lite": "^1.0.30001274"
   }
 }
