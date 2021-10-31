@@ -21,25 +21,32 @@ refs.searchInput.addEventListener('input', _.debounce(onSearch,500));
 
 function onSearch(e) {
   e.preventDefault();
-    fetchCountry(e).then((data) => {
-      refs.countryCardContainer.innerHTML = "";
-      myStack.close(true);
-      if (data.length === 1) {
-            refs.countryCardContainer.insertAdjacentHTML("beforeend",countryCardTpl(data[0]) )
-      } else if (data.length<11) {
-        data.forEach((country )=>{
-          console.log(country.name);
-        });
-        refs.countryCardContainer.insertAdjacentHTML("beforeend",countryList(data))
-      } else {
-        PNotify.notice({
-          text: "Too many matches found. Please, enter a more specific name!",
-          stack: myStack,
-          modules:new Map([...PNotify.defaultModules, [PNotifyMobile, {}]]),
-        })
+  fetchCountry(e)
+    .then((data) => {
+    refs.countryCardContainer.innerHTML = "";
+    myStack.close(true);
+    if (data.length === 1) {
+      refs.countryCardContainer.insertAdjacentHTML("beforeend", countryCardTpl(data[0]))
+    } else if (data.length < 11) {
+      data.forEach((country) => {
+        console.log(country.name);
+      });
+      refs.countryCardContainer.insertAdjacentHTML("beforeend", countryList(data))
+    } else if(data.length>10){
+      PNotify.notice({
+        text: "Too many matches found. Please, enter a more specific name!",
+        stack: myStack,
+        modules: new Map([...PNotify.defaultModules, [PNotifyMobile, {}]]),
+      })
+    } else {
+       PNotify.notice({
+        text: "Such country doesnot exist!Try to type something normal O.o",
+        stack: myStack,
+        modules: new Map([...PNotify.defaultModules, [PNotifyMobile, {}]]),
+      })
     }
- })
-  
+  })
+    
 }
 
 
