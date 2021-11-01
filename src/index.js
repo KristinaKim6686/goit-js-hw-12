@@ -23,7 +23,7 @@ refs.searchInput.addEventListener('input', _.debounce(onSearch,500));
 function onSearch(e) {
   e.preventDefault();
   fetchCountry(e)
-    .then(data => data.ok ? data : Promise.reject(data))
+    // .then(data => data.ok ? data : Promise.reject(data))
     .then((data) => {
       refs.countryCardContainer.innerHTML = "";
       myStack.close(true);
@@ -42,13 +42,13 @@ function onSearch(e) {
         })
       }
     })
-    .catch(onError);
-}
-
-function onError(error){
-  PNotify.notice({
+    .catch(
+      PNotify.notice({
+      title: 'ERROR!',
         text: "Such country doesn't exist!Try to type something normal O.o",
         stack: myStack,
         modules: new Map([...PNotify.defaultModules, [PNotifyMobile, {}]]),
       })
+    )
 }
+
