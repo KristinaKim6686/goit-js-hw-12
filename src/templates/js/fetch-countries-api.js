@@ -9,6 +9,10 @@ export default function fetchCountries(e) {
                 response.json())
         .then(
             data => data)
+        .catch(error => {
+
+            alert("dcsbhjbvdjfkzb ")
+        })
         .finally(
         form.reset
     )
